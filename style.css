@@ -18,6 +18,13 @@
     margin-bottom: 5px;
 }
 
+.container-title img {
+    width: 200px;
+
+    object-fit: cover;
+    object-position: center;
+}
+
 .formIPK {
     max-width: 1440px;
     margin: 0 auto;
@@ -32,15 +39,19 @@
 input {
 
     margin-bottom: 15px;
-    border-radius: 30px;
-    border: 0.2px solid black;
+
+    border: 0.2px solid transparent;
+    border-image: linear-gradient(105deg, #ff85ae, #B5FFFC);
+    border-image-slice: 1;
     width: 100%;
     font-size: 1.5em;
     text-align: center;
+
 }
 
 input:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
 }
 
 

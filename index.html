@@ -10,25 +10,26 @@
 <body>
     <header>
         <div class="container-title">
+            <img src="./PROFILE PICT.png" alt="My Profile Picture" title="My Profile Picture">
             <h1>Calculate IPK Web App</h1>
         </div>
     </header>
 
     <section class="formIPK">
 
-        <input type="text" placeholder="Input your semester 1 value" class="sem1" maxlength="4" required>
-        <input type="text" placeholder="Input your semester 2 value"  class="sem2" maxlength="4" required>
-        <input type="text" placeholder="Input your semester 3 value"  class="sem3" maxlength="4" required>
-        <input type="text" placeholder="Input your semester 4 value" class="sem4" maxlength="4" required>
-        <input type="text" placeholder="Input your semester 5 value"  class="sem5" maxlength="4" required>
-        <input type="text" placeholder="Input your semester 6 value"  class="sem6" maxlength="4" required>
-        <input type="text" placeholder="Input your semester 7 value" class="sem7" maxlength="4"required>
-        <input type="text" placeholder="Input your semester 8 value"  class="sem8" maxlength="4" required>
+        <input type="number" placeholder="Input your semester 1 value" class="sem1" maxlength="4"  required>
+        <input type="number" placeholder="Input your semester 2 value"  class="sem2" maxlength="4" required>
+        <input type="number" placeholder="Input your semester 3 value"  class="sem3" maxlength="4" required>
+        <input type="number" placeholder="Input your semester 4 value" class="sem4" maxlength="4" required>
+        <input type="number" placeholder="Input your semester 5 value"  class="sem5" maxlength="4" required>
+        <input type="number" placeholder="Input your semester 6 value"  class="sem6" maxlength="4" required>
+        <input type="number" placeholder="Input your semester 7 value" class="sem7" min="1" max="4"  required>
+        <input type="number" placeholder="Input your semester 8 value"  class="sem8" min="1" max="4" required>
         <button type="button" class="btnResult">Result</button>
 
     </section>
   
 
-    <script src="load.js"></script>
+    <script src="main.js" type="module"></script>
 </body>
 </html>
