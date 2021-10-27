@@ -1,4 +1,4 @@
-import { getValue } from "./main.js";
+// import {nameStudent,nimStudent} from "./main.js";
 
 // Inheritance Concept
 class Person {
@@ -10,20 +10,35 @@ class Person {
 }
 // Inheritance (4 Pilar OOP)
 class childPerson extends Person {
-    constructor(nama,nim) {
-        super(nama,nim);
+    constructor() {
+    super();
+      
         this.ipkCollection = [];
     }
 
     calculate() {
-        let result = 0;
-        this.ipkCollection.push(parseFloat(getValue()))
-        for (let ipkCollections of this.ipkCollection) {
-            result += ipkCollections;
-            result = result / this.ipkCollection.length;
+        let temp = 0;
+        let result = null;
+     
+        for (let ipkValues of this.ipkCollection) {
+           
+            temp += ipkValues;
+            result = temp / this.ipkCollection.length;
         }
         return result.toFixed(2);
     }
+    mean() {
+        let mean = null;
+       
+            if(this.ipkCollection.length % 2 === 0) {
+                mean = (this.ipkCollection[(this.ipkCollection.length / 2) - 1] + this.ipkCollection[(this.ipkCollection.length / 2)]) / 2;
+            } else {
+                mean = this.ipkCollection[(this.ipkCollection.length/2)-1]
+            }
+       return mean.toFixed(2);
+    }
+    
 }
 
-export {Person,childPerson};
+
+export {childPerson};

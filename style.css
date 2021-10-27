@@ -66,3 +66,26 @@ input:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
+
+
+/* Table */
+
+table {
+    margin: 0 auto;
+    max-width: 1440px;
+    text-align: center;
+
+
+    padding: 10px;
+    border: 1px solid black;
+}
+
+th {
+
+    padding: 10px;
+}
+
+table #historyList {
+    display: flex;
+    flex-direction: column;
+}
