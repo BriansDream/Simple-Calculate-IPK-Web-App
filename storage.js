@@ -30,7 +30,7 @@ const putHistory = (data) => {
 
 const showHistory = () => {
     if(checkWebStorage()) {
-        return JSON.parse(sessionStorage.getItem(cacheKey) || [])
+        return JSON.parse(sessionStorage.getItem(cacheKey) || []);
     } else {
         return [];
     }
@@ -45,7 +45,7 @@ const renderHistory = () => {
 
     // Selalu hapus konten HTML pada element HistoryList agar tidak menampilkan data ganda 
     historyList.innerHTML = "";
-  for (let history of historyData) {
+    for (let history of historyData) {
     const row = document.createElement('tr');
     row.innerHTML = `<td>  ${history.historyIPK} </td>`;
     row.innerHTML += `<td> ${history.historyMean} </td>`;
