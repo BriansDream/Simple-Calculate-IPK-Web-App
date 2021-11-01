@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&family=Source+Sans+Pro&display=swap');
+
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+/* IPK Web App */
+.ipkWebApp {
+    display: flex;
+    margin-top: 18px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+
+.title-container h1 {
+    font-size: 2em;
+}
+
+.title-container .cta {
+    padding: 10px;
+    background-color: rgb(148, 168, 255);
+    max-width: 50%;
+    text-align: center;
+    border-radius: 30px;
+    color: white;
+    font-weight: bolder;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.container-form {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    margin: 10px;
+}
+
+
+
+.container-form .ipkValue {
+    font-size: 1.2em;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    border: 0.2px solid rgb(131, 126, 126);
+    margin: 5px;
+}
+
+.container-form .btnResult {
+    width: 100%;
+    background-color: rgb(255, 68, 68);
+    padding: 10px;
+    border-radius: 30px;
+    font-size: 1.3em;
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgb(0, 0, 0, 0.2);
+}
+
+/* Table */
+.History {
+    overflow: scroll;
+    padding: 10px;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.History th,
+td {
+    padding: 20px;
+    text-align: center;
+}
+
+table {}
+
+@media screen and (max-width: 900px) {
+    .ipkWebApp {
+        flex-direction: column;
+    }
+
+    .title-container {
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .cta {
+        width: 100%;
+    }
+}

@@ -1,59 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculate IPK Web App</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Simple IPK Web App</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-
 <body>
-    <header>
-        <div class="container-title">
-            <img src="./PROFILE PICT.png" alt="My Profile Picture" title="My Profile Picture">
-            <h1>Calculate IPK Web App</h1>
+    
+    <section class="ipkWebApp">
+        <div class="title-container">
+            <h1>IPK Calculation Web App</h1>
+            <p>created by briansdream</p>
+            <div class="cta">
+                My profile
+            </div>
         </div>
-    </header>
 
-    <section class="formIPK">
-
-        <input type="number" placeholder="Input your semester 1 value" class="sem1" maxlength="4" required>
-        <input type="number" placeholder="Input your semester 2 value" class="sem2" maxlength="4" required>
-        <input type="number" placeholder="Input your semester 3 value" class="sem3" maxlength="4" required>
-        <input type="number" placeholder="Input your semester 4 value" class="sem4" maxlength="4" required>
-        <input type="number" placeholder="Input your semester 5 value" class="sem5" maxlength="4" required>
-        <input type="number" placeholder="Input your semester 6 value" class="sem6" maxlength="4" required>
-        <input type="number" placeholder="Input your semester 7 value" class="sem7" min="1" max="4" required>
-        <input type="number" placeholder="Input your semester 8 value" class="sem8" min="1" max="4" required>
-        <button type="submit" class="btnResult">Result</button>
-
+        <div class="container-form">
+           
+            <input type="number" class="sem1 ipkValue" placeholder="Your IPK was semester 1">
+            <input type="number" class="sem2 ipkValue" placeholder="Your IPK was semester 2">
+            <input type="number" class="sem3 ipkValue" placeholder="Your IPK was semester 3">
+            <input type="number" class="sem4 ipkValue" placeholder="Your IPK was semester 4">
+            <input type="number" class="sem5 ipkValue" placeholder="Your IPK was semester 5">
+            <input type="number" class="sem6 ipkValue" placeholder="Your IPK was semester 6">
+            <input type="number" class="sem7 ipkValue" placeholder="Your IPK was semester 7">
+            <input type="number" class="sem8 ipkValue" placeholder="Your IPK was semester 8">
+            <div class="btnResult">
+                Result
+            </div>
+        </div>
     </section>
 
-    <div class="history Calculate">
+    <section class="History">
+        <h1>History of Calculation</h1>
         <table>
             <thead>
-                <tr>
-
-                    <th>Average of IPK</th>
-                    <th>Mean</th>
-                </tr>
+                <th>History of IPK</th>
+                <th>History of Mean</th>
+                <th>History of The Highest Value</th>
             </thead>
-
-            <tbody id="historyList">
+            <tbody class="listHistory">
 
             </tbody>
         </table>
-    </div>
+    </section>
 
-
-
-
-
-    <script src="storage.js" type="module"></script>
-    <script src="main.js" type="module"></script>
-
+    <script
+    src="/js/main.js" type="module"></script>
+  
 </body>
-
 </html>

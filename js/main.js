@@ -1,35 +1,40 @@
-
-const IPKWEBAPP = {
-    displayIpkValue: "",
-    ipkCollection: [],
-  
-    ipkCalculation() {
-        let temp = 0;
-        let result= 0;
-        for (let collectionIPK of IPKWEBAPP.ipkCollection) {
-                temp += collectionIPK;
-                result = temp /  IPKWEBAPP.ipkCollection.length;
-        }
-        return result.toFixed(2);
- 
-    },
-    MeanValue() {
-                let ValueMean = 0;
-                for(let index= 0; index < IPKWEBAPP.ipkCollection.length; index++) {
-                    if(this.ipkCollection.length % 2 == 0) {
-                        ValueMean = (this.ipkCollection[(this.ipkCollection.length / 2) + 1] + this.ipkCollection[this.ipkCollection.length / 2]) / 2;
-                    } else {
-                        ValueMean = this.ipkCollection[this.ipkCollection.length / 2]
-                    }
-                }
-                return ValueMean.toFixed(2);
-        }
-
-
-}
-
-const updateDisplayIPK = () => {
+const machineCalculationIPK = {
     
+
+    ipkCollection: [],
+    ipkCalculation() {
+        let result = 0;
+        let temp = 0;
+        // Higher order function
+        // fungsi yang dapat menerima fungsi lain sebagai argument
+        this.ipkCollection.map((dataIpk) => {
+            temp += dataIpk;
+            result = temp / this.ipkCollection.length;
+        })
+        return result;
+    },
+
+    meanCalculation() {
+        let result = 0;
+        try {
+        for(let index = 0; index < this.ipkCollection.length; index++) {
+           
+                if(this.ipkCollection.length % 2 == 0) {
+                    result = (this.ipkCollection[(this.ipkCollection.length / 2) + 1] +
+                    this.ipkCollection[this.ipkCollection.length / 2]) / 2;
+                } else {
+                    result = this.ipkCollection[this.ipkCollection.length / 2];
+                }
+          
+            }
+
+        } catch(error) {
+            alert(error.message);
+        }
+        return result;
+    },
+
+
 }
 
 function getIpkValue() {
@@ -42,6 +47,7 @@ function getIpkValue() {
     const sem7 = document.querySelector('.sem7').value;
     const sem8 = document.querySelector('.sem8').value;
 
+    try {
     // Check if there is field empty
     if(sem1 == '' || sem1 == null, sem2 == '' || sem2 == null, 
     sem3 == '' || sem3 == null, sem4 == '' || sem4 == null, 
@@ -50,21 +56,25 @@ function getIpkValue() {
             alert('You have to fill all these field');
             return false;
     } else {
-        IPKWEBAPP.ipkCollection.unshift(parseFloat(sem1),parseFloat(sem2)
+        
+       machineCalculationIPK.ipkCollection.unshift(parseFloat(sem1),parseFloat(sem2)
         ,parseFloat(sem3),parseFloat(sem4),parseFloat(sem5),parseFloat(sem6),parseFloat(sem7),parseFloat(sem8));
-        return IPKWEBAPP.ipkCollection;
+        return machineCalculationIPK.ipkCollection;
     }
+    // Parameter error merupakan object yang menyimpan detail informasi dari error yang terjadi
+} catch (error) {
+    alert(error.name);
+}
 }
 
 const clickButton = () => {
     const btnResult = document.querySelector('.btnResult');
     btnResult.addEventListener('click',(event) => {
         getIpkValue();
-        console.log(IPKWEBAPP.MeanValue());
+        console.log(machineCalculationIPK.ipkCalculation(),machineCalculationIPK.meanCalculation());
        
     })
 }
 
 clickButton();
 
-console.log(IPKWEBAPP.ipkCollection.length);
