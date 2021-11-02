@@ -1,7 +1,9 @@
 const machineCalculationIPK = {
-    
-
     ipkCollection: [],
+    displayIPK: "",
+    displayMean: "",
+    displayHighestValue: "",
+
     ipkCalculation() {
         let result = 0;
         let temp = 0;
@@ -11,28 +13,52 @@ const machineCalculationIPK = {
             temp += dataIpk;
             result = temp / this.ipkCollection.length;
         })
-        return result;
+        return this.displayIPK = result;
     },
 
     meanCalculation() {
-        let result = 0;
-        try {
+        let result = null;
+        // Keluarkan semua nilai array
         for(let index = 0; index < this.ipkCollection.length; index++) {
-           
-                if(this.ipkCollection.length % 2 == 0) {
-                    result = (this.ipkCollection[(this.ipkCollection.length / 2) + 1] +
-                    this.ipkCollection[this.ipkCollection.length / 2]) / 2;
-                } else {
-                    result = this.ipkCollection[this.ipkCollection.length / 2];
+            // Compare if jumlah index array habis dibagi 2
+            if(this.ipkCollection.length % 2 === 0) {
+                // Maka nilai index array / 2 + nilai index array / 2 + 1
+                result = (this.ipkCollection[(this.ipkCollection.length / 2) -1] + this.ipkCollection[this.ipkCollection.length / 2]) / 2;
+             
+            } else  {
+                result = this.ipkCollection[this.ipkCollection.length / 2];
+            
+            }
+    }
+    return this.displayMean = result;
+},
+
+    highestValue() {
+        let maxValue = 0;
+       
+        for(let indexLuar=0; indexLuar < this.ipkCollection.length; indexLuar++) {
+            for(let indexDalam = indexLuar+1; indexDalam < this.ipkCollection.length; indexDalam++ ) {
+          // membandingkan data
+                if(this.ipkCollection[indexLuar] >= this.ipkCollection[indexDalam]) {
+                    // Sorting data from ascending to descending
+                    [this.ipkCollection[indexLuar], this.ipkCollection[indexDalam]] = [this.ipkCollection[indexDalam], this.ipkCollection[indexLuar]];
+                     
                 }
-          
+           
             }
 
-        } catch(error) {
-            alert(error.message);
         }
-        return result;
-    },
+        // After the data is sorted
+        this.ipkCollection.map((collectionIpk) => {
+            // Compare all value to find the highest value
+            if(maxValue < collectionIpk) {
+                maxValue = collectionIpk;
+            }
+        })
+
+       return this.displayHighestValue = maxValue;
+ 
+    }
 
 
 }
@@ -46,7 +72,6 @@ function getIpkValue() {
     const sem6 = document.querySelector('.sem6').value;
     const sem7 = document.querySelector('.sem7').value;
     const sem8 = document.querySelector('.sem8').value;
-
     try {
     // Check if there is field empty
     if(sem1 == '' || sem1 == null, sem2 == '' || sem2 == null, 
@@ -71,8 +96,20 @@ const clickButton = () => {
     const btnResult = document.querySelector('.btnResult');
     btnResult.addEventListener('click',(event) => {
         getIpkValue();
-        console.log(machineCalculationIPK.ipkCalculation(),machineCalculationIPK.meanCalculation());
-       
+      machineCalculationIPK.ipkCalculation();
+      machineCalculationIPK.meanCalculation();
+      machineCalculationIPK.highestValue();
+      const History = {
+          historyIpk: machineCalculationIPK.displayIPK,
+          historyMean: machineCalculationIPK.displayMean,
+          historyHighestValue: machineCalculationIPK.displayHighestValue,
+      }
+      putHistory(History);
+      renderHistory();
+      machineCalculationIPK.displayIPK = "";
+      machineCalculationIPK.displayMean = "";
+      machineCalculationIPK.displayHighestValue = "";
+ 
     })
 }
 

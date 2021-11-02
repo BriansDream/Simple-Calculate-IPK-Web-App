@@ -82,7 +82,7 @@
     max-width: 1440px;
     margin: 0 auto;
     display: flex;
-    border: 1px solid black;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -97,6 +97,16 @@ td {
 }
 
 table {}
+
+.ClearHistory {
+    padding: 10px;
+    background-color: hotpink;
+    color: white;
+    font-weight: bolder;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
 
 @media screen and (max-width: 900px) {
     .ipkWebApp {
