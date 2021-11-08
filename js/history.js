@@ -39,9 +39,9 @@ const renderHistory = () => {
     bodyListHistory.innerHTML = "";
     for (let listHistory of historydata) {
         const row = document.createElement('tr');
-        row.innerHTML = `<td> ${listHistory.historyIpk} </td>`;
-        row.innerHTML += `<td> ${listHistory.historyMean} </td>`;
-        row.innerHTML += `<td> ${listHistory.historyHighestValue} </td>`;
+        row.innerHTML = `<td> ${listHistory.ipkHistory} </td>`;
+        row.innerHTML += `<td> ${listHistory.meanHistory} </td>`;
+        row.innerHTML += `<td> ${listHistory.highestValueHistory} </td>`;
 
         bodyListHistory.appendChild(row);
     } 
@@ -53,7 +53,8 @@ const clearHistory = () => {
     btnClearHistory.addEventListener('click', () => {
         if(checkStorage()) {
             if(localStorage.getItem(cacheKey) != null) {
-                localStorage.removeItem(cacheKey)
+                localStorage.removeItem(cacheKey);
+                renderHistory();
             } else {
                 alert('Tidak ada data didalam Local Storage');
             }

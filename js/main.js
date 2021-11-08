@@ -1,8 +1,8 @@
+import { EmptyInput } from "./classCollection.js";
+
 const machineCalculationIPK = {
     ipkCollection: [],
-    displayIPK: "",
-    displayMean: "",
-    displayHighestValue: "",
+    
 
     ipkCalculation() {
         let result = 0;
@@ -13,7 +13,7 @@ const machineCalculationIPK = {
             temp += dataIpk;
             result = temp / this.ipkCollection.length;
         })
-        return this.displayIPK = result;
+        return result.toFixed(2);
     },
 
     meanCalculation() {
@@ -27,10 +27,9 @@ const machineCalculationIPK = {
              
             } else  {
                 result = this.ipkCollection[this.ipkCollection.length / 2];
-            
             }
     }
-    return this.displayMean = result;
+    return result.toFixed(2)
 },
 
     highestValue() {
@@ -55,63 +54,56 @@ const machineCalculationIPK = {
                 maxValue = collectionIpk;
             }
         })
-
        return this.displayHighestValue = maxValue;
- 
     }
-
-
 }
 
 function getIpkValue() {
-    const sem1 = document.querySelector('.sem1').value;
-    const sem2 = document.querySelector('.sem2').value;
-    const sem3 = document.querySelector('.sem3').value;
-    const sem4 = document.querySelector('.sem4').value;
-    const sem5 = document.querySelector('.sem5').value;
-    const sem6 = document.querySelector('.sem6').value;
-    const sem7 = document.querySelector('.sem7').value;
-    const sem8 = document.querySelector('.sem8').value;
+
+    // Get form IPK
+    const ipkForm = document.querySelector('.ipkForm');
+    ipkForm.addEventListener('submit', (event) => {
+        const sem1 = document.querySelector('.sem1').value;
+        const sem2 = document.querySelector('.sem2').value;
+        const sem3 = document.querySelector('.sem3').value;
+        const sem4 = document.querySelector('.sem4').value;
+        const sem5 = document.querySelector('.sem5').value;
+        const sem6 = document.querySelector('.sem6').value;
+        const sem7 = document.querySelector('.sem7').value;
+        const sem8 = document.querySelector('.sem8').value;
     try {
-    // Check if there is field empty
-    if(sem1 == '' || sem1 == null, sem2 == '' || sem2 == null, 
-    sem3 == '' || sem3 == null, sem4 == '' || sem4 == null, 
-    sem5 == '' || sem5 == null, sem6 == '' || sem6 == null, 
-    sem7 == '' || sem7 == null, sem8 == '' || sem8 == null) {
-            alert('You have to fill all these field');
-            return false;
-    } else {
+        // Check if there is field empty
+        if(sem1 == '' || sem1 == null, sem2 == '' || sem2 == null, 
+        sem3 == '' || sem3 == null, sem4 == '' || sem4 == null, 
+        sem5 == '' || sem5 == null, sem6 == '' || sem6 == null, 
+        sem7 == '' || sem7 == null, sem8 == '' || sem8 == null) {
+                throw new EmptyInput('input form cannot be empty');
+        } else {
+            machineCalculationIPK.ipkCollection.unshift(parseFloat(sem1),parseFloat(sem2)
+            ,parseFloat(sem3),parseFloat(sem4),parseFloat(sem5),parseFloat(sem6),parseFloat(sem7),parseFloat(sem8));
+            
+            const HistoryData = {
+                ipkHistory: machineCalculationIPK.ipkCalculation(),
+                meanHistory: machineCalculationIPK.meanCalculation(),
+                highestValueHistory: machineCalculationIPK.highestValue(),
+            }
         
-       machineCalculationIPK.ipkCollection.unshift(parseFloat(sem1),parseFloat(sem2)
-        ,parseFloat(sem3),parseFloat(sem4),parseFloat(sem5),parseFloat(sem6),parseFloat(sem7),parseFloat(sem8));
-        return machineCalculationIPK.ipkCollection;
-    }
+            putHistory(HistoryData);
+            console.log(showHistory());
+            renderHistory();
+        }
+          
     // Parameter error merupakan object yang menyimpan detail informasi dari error yang terjadi
-} catch (error) {
-    alert(error.name);
-}
-}
-
-const clickButton = () => {
-    const btnResult = document.querySelector('.btnResult');
-    btnResult.addEventListener('click',(event) => {
-        getIpkValue();
-      machineCalculationIPK.ipkCalculation();
-      machineCalculationIPK.meanCalculation();
-      machineCalculationIPK.highestValue();
-      const History = {
-          historyIpk: machineCalculationIPK.displayIPK,
-          historyMean: machineCalculationIPK.displayMean,
-          historyHighestValue: machineCalculationIPK.displayHighestValue,
-      }
-      putHistory(History);
-      renderHistory();
-      machineCalculationIPK.displayIPK = "";
-      machineCalculationIPK.displayMean = "";
-      machineCalculationIPK.displayHighestValue = "";
- 
+    } catch (error) {
+        if(error instanceof EmptyInput) {
+            alert(error.message);
+            event.preventDefault();
+        }
+    }
     })
+    
+  
 }
 
-clickButton();
 
+getIpkValue();
